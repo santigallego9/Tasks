@@ -8,24 +8,17 @@
     tools:context="edu.stanford.cs193a.sgalleg9.tasks.MainActivity">
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_weight="1">
 
-        <ScrollView
+        <ListView
+            android:id="@+id/items_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginTop="5dp"
-            android:fillViewport="true">
-
-            <ListView
-                android:id="@+id/items_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </ListView>
-
-        </ScrollView>
+            android:layout_height="wrap_content"
+            android:scrollingCache="true">
+        </ListView>
     </LinearLayout>
 
     <LinearLayout
