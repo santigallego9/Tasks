@@ -6,6 +6,7 @@ import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -42,6 +43,8 @@ public class MainActivity extends SimpleActivity {
 
             addText = find(R.id.add_text);
             addText.setText("");
+        } else {
+            toast("Please enter text");
         }
     }
 
