@@ -1,10 +1,13 @@
 package edu.stanford.cs193a.sgalleg9.tasks;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -63,11 +66,30 @@ public class MainActivity extends SimpleActivity {
 
     @Override
     public boolean onItemLongClick(ListView list, int index) {
-        toast("Deleted: " + items.get(index));
 
-        items.remove(index);
+        final int location = index;
 
-        setList();
+        new AlertDialog.Builder(this)
+                .setTitle("Delete task")
+                .setMessage("Are you sure you want to delete " + items.get(index) + "?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // continue with delete
+                        toast("Deleted: " + items.get(location));
+
+                        items.remove(location);
+
+                        setList();
+
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
         return true;
     }
 
